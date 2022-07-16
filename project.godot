@@ -1,0 +1,52 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Reference",
+"class": "InvestigateState",
+"language": "GDScript",
+"path": "res://src/actors/monster/behaviours/investigate_state.gd"
+}, {
+"base": "Reference",
+"class": "SprintState",
+"language": "GDScript",
+"path": "res://src/actors/player/behaviours/sprint_state.gd"
+}, {
+"base": "Reference",
+"class": "WalkState",
+"language": "GDScript",
+"path": "res://src/actors/player/behaviours/walk_state.gd"
+}, {
+"base": "Reference",
+"class": "WanderState",
+"language": "GDScript",
+"path": "res://src/actors/monster/behaviours/wander_state.gd"
+} ]
+_global_script_class_icons={
+"InvestigateState": "",
+"SprintState": "",
+"WalkState": "",
+"WanderState": ""
+}
+
+[application]
+
+config/name="ICTAgreementViolation"
+run/main_scene="res://src/main/main.tscn"
+config/icon="res://icon.png"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+environment/default_environment="res://default_env.tres"
