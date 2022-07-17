@@ -10,6 +10,16 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Reference",
+"class": "AttackState",
+"language": "GDScript",
+"path": "res://src/actors/monster/behaviours/attack_state.gd"
+}, {
+"base": "Reference",
+"class": "DeathState",
+"language": "GDScript",
+"path": "res://src/actors/player/behaviours/death_state.gd"
+}, {
+"base": "Reference",
 "class": "InvestigateState",
 "language": "GDScript",
 "path": "res://src/actors/monster/behaviours/investigate_state.gd"
@@ -30,6 +40,8 @@ _global_script_classes=[ {
 "path": "res://src/actors/monster/behaviours/wander_state.gd"
 } ]
 _global_script_class_icons={
+"AttackState": "",
+"DeathState": "",
 "InvestigateState": "",
 "SprintState": "",
 "WalkState": "",

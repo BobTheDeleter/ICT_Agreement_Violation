@@ -18,16 +18,7 @@ tile_data = PoolIntArray( -589834, 0, 0, -589833, 0, 0, -589832, 0, 0, -589831, 
 [node name="waypoints" type="Node2D" parent="."]
 
 [node name="Node2D" type="Node2D" parent="waypoints"]
-position = Vector2( -141, -243 )
+position = Vector2( 314, 322 )
 
 [node name="Node2D2" type="Node2D" parent="waypoints"]
-position = Vector2( -300, 289 )
-
-[node name="Node2D3" type="Node2D" parent="waypoints"]
-position = Vector2( 314, -22 )
-
-[node name="Node2D4" type="Node2D" parent="waypoints"]
-position = Vector2( 318, 212 )
-
-[node name="Node2D5" type="Node2D" parent="waypoints"]
-position = Vector2( -316, -22 )
+position = Vector2( 319, -158 )

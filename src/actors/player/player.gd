@@ -6,6 +6,8 @@ export var sprint_time = 3
 export var sprint_multiplier = 1.5 
 export var sprint_accel_time = 2
 
+var layer
+
 var STATES
 var _state
 func _ready():
@@ -13,6 +15,7 @@ func _ready():
     STATES = {
         "walk": WalkState.new(csf, self, sprint_time, walk_speed),
         "sprint": SprintState.new(csf, self, sprint_accel_time, walk_speed, sprint_multiplier),
+        "death": DeathState.new(csf, self),
     }
     _state = STATES["walk"]
     _state._on_enter()
@@ -27,3 +30,7 @@ func change_state(state):
     _state._on_exit()
     _state = STATES[state]
     _state._on_enter()
+
+func die(vps):
+    change_state("death")
+    _state._on_enter_death(vps)

@@ -23,16 +23,19 @@ remote_path = NodePath("../../../ui/Camera2D")
 
 [node name="monster" parent="level" instance=ExtResource( 3 )]
 position = Vector2( 48, 51 )
-emotion_recognition_times = PoolIntArray( 1 )
-distance_recognition_multipliers = PoolRealArray( 100, 2, 0.5 )
-distance_recognition_ranges = PoolIntArray( 0, 350, 1000 )
+emotion_recognition_times = PoolIntArray( 2 )
+distance_recognition_multipliers = PoolRealArray( 0.5, 1, 5 )
+distance_recognition_ranges = PoolIntArray( 700, 1500, 12000 )
+drag_time = 10
 
 [node name="waypoint_debug" type="Line2D" parent="level"]
-width = 0.0
+visible = false
+width = 2.5
 
 [node name="vision_debug" type="Line2D" parent="level"]
+visible = false
 points = PoolVector2Array( 0, 0, 100, 100 )
-width = 0.0
+width = 2.5
 default_color = Color( 0.431373, 1, 0.4, 1 )
 
 [node name="ui" type="Node2D" parent="."]
@@ -40,7 +43,6 @@ default_color = Color( 0.431373, 1, 0.4, 1 )
 [node name="Camera2D" type="Camera2D" parent="ui"]
 position = Vector2( -78, 237 )
 current = true
-zoom = Vector2( 0.3, 0.3 )
 limit_left = -400
 limit_top = -400
 limit_right = 400

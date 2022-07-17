@@ -1,5 +1,5 @@
 class_name SprintState
-extends "res://src/_base_state.gd"
+extends "res://src/actors/_base_state.gd"
 
 var speed
 var sprint_speed

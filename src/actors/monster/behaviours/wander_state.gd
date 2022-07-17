@@ -1,5 +1,5 @@
 class_name WanderState
-extends "res://src/_base_state.gd"
+extends "res://src/actors/_base_state.gd"
 
 func _init(csf, e, pd, wa, s, p, ss).(csf, e):
     point_distance = pd
@@ -39,9 +39,9 @@ func get_path():
 var space_state
 var player
 func can_see_player():
-    var result = space_state.intersect_ray(entity.global_position, player.node.global_position, [self])
+    var result = space_state.intersect_ray(entity.global_position, player.global_position, [self])
     if result:
         entity.vdebug.points = [result.position, entity.position]
-        if result.collider == player.node:
+        if result.collider == player:
             return true
     return false

@@ -1,5 +1,5 @@
 class_name WalkState
-extends "res://src/_base_state.gd"
+extends "res://src/actors/_base_state.gd"
 
 var sprint_time
 var walk_speed
