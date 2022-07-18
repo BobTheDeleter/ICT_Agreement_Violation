@@ -14,7 +14,7 @@ func update(_delta):
     input.x = Input.get_axis("ui_left", "ui_right") 
     input.y = Input.get_axis("ui_up", "ui_down")
 
-    if input.length() == 0:
+    if Input.is_action_just_released("ui_accept"):
         change_state_func.call_func("walk")
 
 func physics_update(delta):

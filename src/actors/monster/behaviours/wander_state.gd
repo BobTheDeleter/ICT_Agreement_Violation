@@ -28,20 +28,16 @@ func physics_update(delta):
         
       if entity.position.distance_to(current_path[0]) < point_distance:
           current_path.remove(0)
-    else:
-        entity.emotion = max(entity.emotion-1, 0)
 
 func get_path():
     current_wp = waypoint_array[ randi()%(waypoint_array.size()) ]
     current_path = nav2d.get_simple_path(entity.position, current_wp.position, false)
-    entity.wpdebug.points = current_path
 
 var space_state
 var player
 func can_see_player():
     var result = space_state.intersect_ray(entity.global_position, player.global_position, [self])
     if result:
-        entity.vdebug.points = [result.position, entity.position]
         if result.collider == player:
             return true
     return false

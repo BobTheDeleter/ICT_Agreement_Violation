@@ -8,7 +8,7 @@ max_value = 10.0
 _data = [ Vector2( 0, 7.5 ), 0.0, 0.0, 0, 0, Vector2( 0.497959, 10 ), 0.0, 0.0, 0, 0, Vector2( 1, 2.90909 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 40.0
+radius = 80.0
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -225,9 +225,9 @@ end_cap_mode = 2
 shape = SubResource( 1 )
 
 [node name="polygons" type="Node2D" parent="."]
-position = Vector2( -15, -47 )
+position = Vector2( -38, -95 )
 rotation = 0.0319158
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 0.2, 0.2 )
 
 [node name="shoulders" type="Polygon2D" parent="polygons"]
 position = Vector2( -287.197, -220.948 )
@@ -270,8 +270,7 @@ position = Vector2( -1, -4 )
 
 [node name="shoulders" type="Bone2D" parent="Skeleton2D"]
 position = Vector2( 18, 31 )
-rotation = -0.0255676
-scale = Vector2( 1, 1 )
+rotation = -0.0255677
 rest = Transform2D( 0.999673, -0.0255648, 0.0255648, 0.999673, 18, 31 )
 
 [node name="neck" type="Bone2D" parent="Skeleton2D/shoulders"]
@@ -282,7 +281,6 @@ rest = Transform2D( 0.999951, 0.0099042, -0.0099042, 0.999951, -6.07561, -52.991
 [node name="forehead" type="Bone2D" parent="Skeleton2D/shoulders/neck"]
 position = Vector2( -14.9311, 6.16957 )
 rotation = 0.755712
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.727783, 0.685807, -0.685807, 0.727783, -14.9311, 6.16957 )
 
 [node name="jaw" type="Bone2D" parent="Skeleton2D/shoulders"]

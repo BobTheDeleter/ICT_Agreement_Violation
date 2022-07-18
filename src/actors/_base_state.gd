@@ -10,11 +10,11 @@ func _init(csf: FuncRef, e: KinematicBody2D):
     entity = e
 
 #getting external data from entity/world before going into state. 
-func _on_enter():
+func on_enter():
     pass
 
 #setting external data from entity/world before going into state.
-func _on_exit():
+func on_exit():
     pass
 
 #to be called inside _process
