@@ -1,7 +1,7 @@
 class_name DeathState
-extends "res://src/actors/_base_state.gd"
+extends "./_base_state.gd"
 
-func _init(csf, e).(csf, e):
+func _init(e).(e):
     pass
 
 var vector_per_sec =Vector2.ZERO

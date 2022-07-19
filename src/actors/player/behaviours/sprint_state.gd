@@ -1,10 +1,10 @@
 class_name SprintState
-extends "res://src/actors/_base_state.gd"
+extends "./_base_state.gd"
 
 var speed
 var sprint_speed
 var accel_per_sec
-func _init(csf, e, a, w, s).(csf, e):
+func _init(e, a, w, s).(e):
     speed = w
     sprint_speed = w*s
     accel_per_sec = (w*(s-1))/a
@@ -15,7 +15,7 @@ func update(_delta):
     input.y = Input.get_axis("ui_up", "ui_down")
 
     if Input.is_action_just_released("ui_accept"):
-        change_state_func.call_func("walk")
+        entity.change_state("walk")
 
 func physics_update(delta):
     if speed < sprint_speed:

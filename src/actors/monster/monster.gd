@@ -20,26 +20,24 @@ export var search_radius = 0
 onready var waypoints = get_parent().get_node("waypoints").get_children()
 onready var player = get_parent().player()
 onready var wp_radius = $CollisionShape2D.shape.radius + 10
-onready var attack_radius = $CollisionShape2D.shape.radius + 10 + player.get_node("CollisionShape2D").shape.radius + attack_range
 
 #debug
 onready var wpdebug = get_parent().get_node("waypoint_debug")
 onready var vdebug = get_parent().get_node("vision_debug")
 
 onready var space_state = get_world_2d().direct_space_state
+onready var nav2D = get_parent().get_node("Navigation2D")
 
 var STATES
 var _state
 
 func _ready():
-	var csf = funcref(self, "change_state")
-	var ss = get_world_2d().direct_space_state
 	STATES = {
-		"wander": WanderState.new(csf, self, wp_radius, waypoints, speed, player, ss),
-		"investigate": InvestigateState.new(csf, self, search_speed, emotion_recognition_times, distance_recognition_multipliers, distance_recognition_ranges, wp_radius, attack_radius),
-		"chase": ChaseState.new(csf, self, run_speed, attack_radius),
-		"search": SearchState.new(csf, self, search_points, search_radius, search_speed, wp_radius),
-		"attack": AttackState.new(csf, self),
+		"wander": WanderState.new(self, speed, waypoints),
+		"investigate": InvestigateState.new(self, search_speed, emotion_recognition_times, distance_recognition_multipliers, distance_recognition_ranges, attack_range),
+		"chase": ChaseState.new(self, run_speed, attack_range),
+		"search": SearchState.new(self, search_points, search_radius, search_speed),
+		"attack": AttackState.new(self),
 	}
 	_state = STATES["wander"]
 	_state.on_enter()
@@ -50,8 +48,16 @@ var player_last_known = Vector2()
 func _process(delta):
 	_state.update(delta)
 
+var current_path = PoolVector2Array()
 func _physics_process(delta):
-	_state.physics_update(delta)
+	if current_path.size() > 0:
+		position += position.direction_to(current_path[0])*_state.speed*delta
+		move_and_slide(Vector2.ZERO)
+		  
+		if position.distance_to(current_path[0]) < wp_radius:
+			current_path.remove(0)
+	else:
+		_state.pathfind()
 
 func change_state(state):
 	_state.on_exit()
@@ -69,3 +75,9 @@ func can_see_player():
 
 func raycast(p1, p2):
 	return space_state.intersect_ray(p1, p2)
+
+func pathfind(p1, p2):
+	wpdebug.points = nav2D.get_simple_path(p1, p2, false)
+	return nav2D.get_simple_path(p1, p2, false)
+
+#TODO add handler for tenseness(?) level, possibly external, probably internal

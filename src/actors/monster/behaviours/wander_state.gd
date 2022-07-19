@@ -1,43 +1,17 @@
 class_name WanderState
-extends "res://src/actors/_base_state.gd"
+extends "./_base_state.gd"
 
-func _init(csf, e, pd, wa, s, p, ss).(csf, e):
-    point_distance = pd
-    waypoint_array = wa
-    nav2d = entity.get_parent().get_node("Navigation2D")
-    speed = s
-    space_state = ss
-    player = p
+func _init(e, s, wa).(e):
+	waypoint_array = wa
+	speed = s
 
-var point_distance
 var waypoint_array
 var current_wp
-var current_path = PoolVector2Array()
-var nav2d
 func update(_delta):
-    if can_see_player():
-        change_state_func.call_func("investigate")
-    if current_path.size() < 1:
-        get_path()
+	if entity.can_see_player():
+		entity.player_last_known = entity.player.position
+		entity.change_state("investigate")
 
-var speed
-func physics_update(delta):
-    if current_path.size() > 0:
-      entity.position += entity.position.direction_to(current_path[0])*speed*delta
-      entity.move_and_slide(Vector2.ZERO)
-        
-      if entity.position.distance_to(current_path[0]) < point_distance:
-          current_path.remove(0)
-
-func get_path():
-    current_wp = waypoint_array[ randi()%(waypoint_array.size()) ]
-    current_path = nav2d.get_simple_path(entity.position, current_wp.position, false)
-
-var space_state
-var player
-func can_see_player():
-    var result = space_state.intersect_ray(entity.global_position, player.global_position, [self])
-    if result:
-        if result.collider == player:
-            return true
-    return false
+func pathfind():
+	entity.current_path = entity.pathfind(entity.position, waypoint_array[ randi()%(waypoint_array.size()) ].position)
+	entity.emotion = max(entity.emotion-1, 0)

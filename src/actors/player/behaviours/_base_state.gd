@@ -1,12 +1,9 @@
 extends Reference
 
-var change_state_func: FuncRef
-
 var entity
 
 #initialising export vars and precaluclated values that will not change
-func _init(csf: FuncRef, e: KinematicBody2D):
-    change_state_func = csf
+func _init(e: KinematicBody2D):
     entity = e
 
 #getting external data from entity/world before going into state. 

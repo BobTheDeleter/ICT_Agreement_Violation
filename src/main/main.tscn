@@ -37,11 +37,9 @@ search_points = 4
 search_radius = 200
 
 [node name="waypoint_debug" type="Line2D" parent="level"]
-visible = false
 width = 2.5
 
 [node name="vision_debug" type="Line2D" parent="level"]
-visible = false
 points = PoolVector2Array( 0, 0, 100, 100 )
 width = 2.5
 default_color = Color( 0.431373, 1, 0.4, 1 )

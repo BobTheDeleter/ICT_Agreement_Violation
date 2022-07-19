@@ -1,11 +1,12 @@
 class_name AttackState
-extends "res://src/actors/_base_state.gd"
+extends "./_base_state.gd"
 
 signal caught_player(dv)
 
-func _init(csf, e).(csf, e):
+func _init(e).(e):
     var _c = connect("caught_player", entity.player, "die")
     line = entity.get_node("Line2D")
+    speed = 0
 
 var line
 func on_enter():
