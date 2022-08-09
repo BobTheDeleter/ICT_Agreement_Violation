@@ -1,9 +1,8 @@
 class_name ChaseState
 extends "./_base_state.gd"
 
-func _init(e, rs, ar).(e):
+func _init(e, rs, ar).(e, rs, "run"):
     attack_radius = ar
-    speed = rs
 
 func on_enter():
     player_last = entity.player_last_known

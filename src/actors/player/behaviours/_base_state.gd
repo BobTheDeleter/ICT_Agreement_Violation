@@ -1,10 +1,13 @@
 extends Reference
+class_name BasePlayerState
 
-var entity
+var entity: KinematicBody2D
+var animation: String
 
 #initialising export vars and precaluclated values that will not change
-func _init(e: KinematicBody2D):
+func _init(e: KinematicBody2D, a: String):
     entity = e
+    animation = a
 
 #getting external data from entity/world before going into state. 
 func on_enter():

@@ -1,8 +1,7 @@
 class_name InvestigateState
 extends "./_base_state.gd"
 
-func _init(e, ss, ert, drm, drr, ar).(e):
-	speed = ss
+func _init(e, ss, ert, drm, drr, ar).(e, ss, "run"):
 	emotion_recognition_times = ert
 	distance_recognition_multipliers = drm
 	distance_recognition_ranges = drr
@@ -34,16 +33,12 @@ func update(_delta):
 		
 		if attack_timer.is_stopped():
 			entity.change_state("chase")
-	else:
-		entity.change_state("search")
-	# if entity.position.distance_to(player_last) < wp_radius:
-	#     entity.change_state("search")
 
 func pathfind():
-	pass
+	entity.change_state("search")
 
 func start_attack_timer():
-	var emotion_time = emotion_recognition_times[entity.emotion]
+	var emotion_time = emotion_recognition_times[entity.level.get_alert(entity.position)]
 	var distance_mult = 0
 	var distance = entity.position.distance_to(entity.player.position)
 

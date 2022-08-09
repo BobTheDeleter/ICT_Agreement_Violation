@@ -1,18 +1,22 @@
 extends Reference
+class_name BaseMonsterState
 
-var entity
+var entity: KinematicBody2D
 
-var speed
+var animation: String
+var speed: int
 
 #initialising export vars and precaluclated values that will not change
-func _init(e: KinematicBody2D):
+func _init(e: KinematicBody2D, s: int, a:String):
     entity = e
+    speed = s
+    animation = a
 
 #getting external data from entity/world before going into state. 
 func on_enter():
     pass
 
-#setting external data from entity/world before going into state.
+#setting external data from entity/world before leaving state.
 func on_exit():
     pass
 

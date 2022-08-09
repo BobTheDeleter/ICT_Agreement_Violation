@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/ui/theme/default.tres" type="Theme" id=1]
+[ext_resource path="res://assets/art/arrow1.svg" type="Texture" id=2]
+[ext_resource path="res://assets/art/arrow2.svg" type="Texture" id=3]
+[ext_resource path="res://src/user_interface/hud.gd" type="Script" id=4]
+
+[node name="ui" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+
+[node name="points" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 80.0
+margin_bottom = 48.0
+text = "0"
+align = 1
+
+[node name="goal" type="TextureRect" parent="."]
+margin_left = 19.0
+margin_top = 48.0
+margin_right = 88.0
+margin_bottom = 112.0
+rect_pivot_offset = Vector2( 22, 32 )
+texture = ExtResource( 2 )
+
+[node name="monster" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -80.0
+margin_top = 48.0
+margin_right = -16.0
+margin_bottom = 112.0
+rect_pivot_offset = Vector2( 18, 35 )
+texture = ExtResource( 3 )

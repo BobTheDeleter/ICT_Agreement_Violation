@@ -1,17 +1,15 @@
 class_name WanderState
 extends "./_base_state.gd"
 
-func _init(e, s, wa).(e):
-	waypoint_array = wa
-	speed = s
+func _init(e, s).(e, s, "walk"):
+    pass
 
-var waypoint_array
-var current_wp
 func update(_delta):
-	if entity.can_see_player():
-		entity.player_last_known = entity.player.position
-		entity.change_state("investigate")
+    if entity.can_see_player():
+        entity.player_last_known = entity.player.position
+        entity.change_state("investigate")
 
 func pathfind():
-	entity.current_path = entity.pathfind(entity.position, waypoint_array[ randi()%(waypoint_array.size()) ].position)
-	entity.emotion = max(entity.emotion-1, 0)
+    entity.level.dec_alert(entity.position)
+    entity.current_path = entity.pathfind(entity.position, entity.level.grid_to_world((entity.level.get_weighted_grid())))
+    entity.emotion = max(entity.emotion-1, 0)
